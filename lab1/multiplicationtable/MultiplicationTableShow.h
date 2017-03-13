@@ -1,0 +1,10 @@
+//
+// Created by Rejurhf on 13.03.2017.
+//
+
+#ifndef JIMP_EXERCISES_MULTIPLICATIONTABLESHOW_H
+#define JIMP_EXERCISES_MULTIPLICATIONTABLESHOW_H
+
+void MultiplicationTableShow(int tab[][10]);
+
+#endif //JIMP_EXERCISES_MULTIPLICATIONTABLESHOW_H
