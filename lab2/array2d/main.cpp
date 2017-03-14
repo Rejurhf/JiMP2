@@ -1,7 +1,8 @@
 #include <iostream>
-#include "array2d.h"
+#include "Array2D.h"
 
 int main() {
-    std::cout << "factorial of 4 is: " << factorial(4) << std::endl;
+    int **array = Array2D(3, 2);
+    DeleteArray2D(array, 3, 2);
     return 0;
 }
