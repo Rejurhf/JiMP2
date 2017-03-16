@@ -19,14 +19,15 @@ namespace minimaltimedifference {
     }
 
     unsigned int MinimalTimeDifference(std::vector<std::string> times) {
-        int vSize = times.size(), i = 0, min = 720, tmp;
+        int vSize = times.size();
+        int i = 0, min = 720, tmp;
         int *tab = new int[vSize];
         for (std::string v : times) {
             tab[i] = ToMinutes(v);
             ++i;
         }
-        for (int j = 0; j < vSize; ++j) {
-            for (int k = j+1; k < vSize; ++k) {
+        for (i = 0; i < vSize; ++i) {
+            for (int j = i+1; j < vSize; ++j) {
                 if(tab[i] - tab[j] < 0){
                     tmp = tab[j] - tab[i];
                 }else{
