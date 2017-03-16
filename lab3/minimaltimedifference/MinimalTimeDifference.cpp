@@ -23,23 +23,22 @@ namespace minimaltimedifference {
         int *tab = new int[vSize];
         for (std::string v : times) {
             tab[i] = ToMinutes(v);
-            if(tab[i] > 720)
-                tab[i] = 1440 - tab[i];
             ++i;
         }
-        for (int j = 0; j < vSize-1; ++j) {
+        for (int j = 0; j < vSize; ++j) {
             for (int k = j+1; k < vSize; ++k) {
-                if(tab[i] > tab[j]){
-                    tmp = tab[i] - tab[j];
-                    if (min > tmp)
-                        min = tmp;
-                }else{
+                if(tab[i] - tab[j] < 0){
                     tmp = tab[j] - tab[i];
-                    if (min > tmp)
-                        min = tmp;
+                }else{
+                    tmp = tab[i] - tab[j];
                 }
+                if(tmp > 720)
+                    tmp = 1440 - tmp;
+                if(tmp < min)
+                    min = tmp;
             }
         }
+        delete tab;
         return min;
     }
 }
