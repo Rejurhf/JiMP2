@@ -3,8 +3,6 @@
 //
 
 #include "GreatestProduct.h"
-#include <vector>
-using namespace std;
 
 int GreatestProduct(const std::vector<int> &numbers, int k){
     int num1 = 0, num2 = 0;
