@@ -1,5 +1,5 @@
 //
-// Created by Rejurhf on 19.03.2017.
+// Created by Rejurhf on 20.03.2017.
 //
 
 #ifndef JIMP_EXERCISES_SMARTTREE_H
