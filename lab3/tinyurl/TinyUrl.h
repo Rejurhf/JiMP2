@@ -16,6 +16,7 @@ namespace tinyurl{
         std::string code;
         std::string url;
     };
+
     std::unique_ptr<TinyUrlCodec> Init();
     void NextHash(std::array<char, 6> *state);
     std::string Encode(const std::string &url, std::unique_ptr<TinyUrlCodec> *codec);
