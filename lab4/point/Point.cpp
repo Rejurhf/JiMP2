@@ -4,7 +4,11 @@
 
 #include <cmath>
 #include <ostream>
+#include <iostream>
+#include <string>
 #include "Point.h"
+
+class String;
 
 using ::std::ostream;
 using ::std::endl;
@@ -18,19 +22,25 @@ using ::std::sqrt;
 //Specjalna inicjalizacja zmiennych. Zmienne są inicjowane
 //nim zostanie wywołane ciało konstruktora
 Point::Point():x_(0),y_(0){
-    cout << "Konstruktor bezparametrowy" << endl;
+    std::cout << "Konstruktor bezparametrowy" << endl;
 }
 
 Point::Point(double x, double y){
-    cout << "Konstruktor parametrowy" << endl;
+    std::cout << "Konstruktor parametrowy" << endl;
     x_ = x;
-    y_ = y;
+    this->y_ = y;
 }
 
 Point::~Point(){
-    cout << "Destruktor! Nic nie robie, bo nie musze zwalniać pamięci!";
-    cout << endl;
+    std::cout << "Destruktor! Nic nie robie, bo nie musze zwalniać pamięci!";
+    std::cout << endl;
 }
+
+double GetX() const{
+    return x_;
+}
+
+double GetY() const;
 
 double Point::Distance(const Point &other) const{
     return sqrt(pow(GetX()-other.GetX(),2)+pow(GetY()-other.GetY(),2));
@@ -40,6 +50,8 @@ void Point::ToString(ostream *out) const{
     (*out) << "(" << GetX() << ";" << GetY() << ")";
 }
 
-std::String Point::ToString(){
-    return "(" + GetX() + ";" + GetY() + ")";
+std::string Point::ToString() const{
+    std::string text = "(";
+    text = text + ";" + ")";
+    return text;
 }

@@ -20,6 +20,8 @@ class Point {
         //nie mogą zmodyfikować tego obiektu.
         void ToString(std::ostream *out) const;
 
+        std::string ToString() const;
+
         double Distance(const Point &other) const;
 
 
