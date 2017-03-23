@@ -19,8 +19,9 @@ namespace minimaltimedifference {
     }
 
     unsigned int MinimalTimeDifference(std::vector<std::string> times) {
+        const int maxValue = 24 * 60;
+        int i = 0, min = maxValue / 2, tmp;
         int vSize = times.size();
-        int i = 0, min = 720, tmp;
         int *tab = new int[vSize];
         for (std::string v : times) {
             tab[i] = ToMinutes(v);
@@ -33,8 +34,8 @@ namespace minimaltimedifference {
                 }else{
                     tmp = tab[i] - tab[j];
                 }
-                if(tmp > 720)
-                    tmp = 1440 - tmp;
+                if(tmp > maxValue / 2)
+                    tmp = maxValue - tmp;
                 if(tmp < min)
                     min = tmp;
             }
