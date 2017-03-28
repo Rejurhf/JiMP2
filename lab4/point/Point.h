@@ -5,8 +5,7 @@
 #ifndef JIMP_EXERCISES_POINT_H
 #define JIMP_EXERCISES_POINT_H
 
-namespace geometry{
-    class Point {
+class Point {
     public:
         //Konstruktor bezparametrowy
         Point();
@@ -33,6 +32,6 @@ namespace geometry{
     private:
         //w przeciwienstwie do pythona C++ wymaga jawnej deklaracji składowych pól klasy:
         double x_, y_;
-    };
-}
+};
+
 #endif //JIMP_EXERCISES_POINT_H
