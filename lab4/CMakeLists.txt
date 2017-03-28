@@ -1,6 +1,6 @@
 project(lab4)
 
-add_subdirectory_if_exists(geometry/point)
+add_subdirectory_if_exists(point)
 add_subdirectory_if_exists(netsurl)
 add_subdirectory_if_exists(netstemplateengine)
 add_subdirectory_if_exists(netsjson)
