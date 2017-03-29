@@ -3,7 +3,6 @@
 //
 
 #include <cmath>
-#include <ostream>
 #include <iostream>
 #include "Point.h"
 
@@ -27,22 +26,6 @@ namespace geometry {
     Point::~Point() {
         cout << "Destruktor! Nic nie robie, bo nie musze zwalniać pamięci!";
         cout << endl;
-    }
-
-    double Point::GetX() const {
-        return x_;
-    }
-
-    double Point::GetY() const {
-        return y_;
-    }
-
-    void Point::SetX(double x) {
-        this->x_ = x;
-    }
-
-    void Point::SetY(double y) {
-        this->y_ = y;
     }
 
     double Point::Distance(const Point &other) const {

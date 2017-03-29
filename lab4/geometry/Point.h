@@ -5,6 +5,8 @@
 #ifndef JIMP_EXERCISES_POINT_H
 #define JIMP_EXERCISES_POINT_H
 
+#include <ostream>
+
 namespace geometry {
     class Point {
     public:
@@ -20,21 +22,18 @@ namespace geometry {
         //Metody nie modyfikujące stanu obiektu (const na końcu metody)
         //nie mogą zmodyfikować tego obiektu.
         void ToString(std::ostream *out) const;
-
         double Distance(const Point &other) const;
 
 
         //metody akcesorów są publiczne i tylko w przy ich pomocy
         //można się dostać z zewnątrz do pól klasy
-        double GetX() const;
-
-        double GetY() const;
+        double GetX() const{ return x_;};
+        double GetY() const{ return y_;};
 
         //metody seterów pozwalające zmienić stan obiektu
         //po jego zainicjalizowaniu
-        void SetX(double x);
-
-        void SetY(double y);
+        void SetX(double x){x_ = x;};
+        void SetY(double y){y_ = y;};
 
     private:
         //w przeciwienstwie do pythona C++ wymaga jawnej deklaracji składowych pól klasy:

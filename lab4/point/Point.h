@@ -19,16 +19,15 @@ class Point {
         void ToString(std::ostream *out) const;
         double Distance(const Point &other) const;
 
-
         //metody akcesorów są publiczne i tylko w przy ich pomocy
         //można się dostać z zewnątrz do pól klasy
-        double GetX() const;
-        double GetY() const;
+        double GetX() const{ return x_;};
+        double GetY() const{ return y_;};
 
         //metody seterów pozwalające zmienić stan obiektu
         //po jego zainicjalizowaniu
-        void SetX(double x);
-        void SetY(double y);
+        void SetX(double x){x_ = x;};
+        void SetY(double y){y_ = y;};
     private:
         //w przeciwienstwie do pythona C++ wymaga jawnej deklaracji składowych pól klasy:
         double x_, y_;
