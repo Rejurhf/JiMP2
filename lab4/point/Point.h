@@ -21,13 +21,13 @@ class Point {
 
         //metody akcesorów są publiczne i tylko w przy ich pomocy
         //można się dostać z zewnątrz do pól klasy
-        double GetX() const{ return x_;};
-        double GetY() const{ return y_;};
+        double GetX() const;
+        double GetY() const;
 
         //metody seterów pozwalające zmienić stan obiektu
         //po jego zainicjalizowaniu
-        void SetX(double x){x_ = x;};
-        void SetY(double y){y_ = y;};
+        void SetX(double x);
+        void SetY(double y);
     private:
         //w przeciwienstwie do pythona C++ wymaga jawnej deklaracji składowych pól klasy:
         double x_, y_;
