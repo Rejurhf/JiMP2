@@ -42,6 +42,14 @@ double Point::GetY() const{
     return y_;
 }
 
+void Point::SetX(double x){
+    this->x_ = x;
+}
+
+void Point::SetY(double y){
+    this->y_ = y;
+}
+
 double Point::Distance(const Point &other) const{
     return sqrt(pow(GetX()-other.GetX(),2)+pow(GetY()-other.GetY(),2));
 }
