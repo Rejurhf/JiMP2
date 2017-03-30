@@ -1,8 +1,17 @@
 //
+
+// Created by Student on 16/03/17.
+
 // Created by Rejurhf on 19.03.2017.
+
 //
 
-#include "TinyUrl.h"
+#include "TinyUrl.h
+
+std::unique_ptr<TinyUrlCodec> Init();
+void NextHash(std::arrray<char, 6> *state);
+std::string Encode(const std::string &url, std::unique_ptr<TinyUrlCodec> *codec);
+std::string Decode(const std::unique_ptr<TinyUrlCodec> &codec, const std::string &hash);
 
 namespace tinyurl{
     std::array<char, 6> arry {'0', '0', '0', '0', '0', '0'};
@@ -49,3 +58,4 @@ namespace tinyurl{
         return codec->url;
     }
 }
+
