@@ -8,6 +8,7 @@ set(TEST_LAB_NUMBER 4)
 #######################################################################
 #add_gtest_with_memleak_stepped(tiny_url 1 2)
 
+
 add_gtest_with_memleak(simple_url libsimpleurl)
 
 add_gtest_with_memleak(simple_template_engine libsimpletemplateengine)
@@ -27,3 +28,4 @@ target_link_libraries(lab4_all_tests ${GTEST_LIBS})
 target_link_libraries(lab4_all_tests libsimpleurl)
 target_link_libraries(lab4_all_tests memleak)
 target_link_libraries(lab4_all_tests stringutility)
+

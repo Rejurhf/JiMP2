@@ -1,8 +1,10 @@
 //
+
 // Created by Rejurhf on 19.03.2017.
 //
 
 #include "TinyUrl.h"
+
 
 namespace tinyurl{
     std::array<char, 6> arry {'0', '0', '0', '0', '0', '0'};
@@ -48,4 +50,9 @@ namespace tinyurl{
     std::string Decode(const std::unique_ptr<TinyUrlCodec> &codec, const std::string &hash){
         return codec->url;
     }
+
 }
+
+
+
+
