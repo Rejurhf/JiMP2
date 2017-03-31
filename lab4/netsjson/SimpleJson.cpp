@@ -59,10 +59,9 @@ namespace nets{
             case 4:
                 out += "\"";
                 for (int i = 0; i < value_string_.size(); ++i) {
-                    if(value_string_[i] == '\"' or value_string_[i] == '\\' or value_string_[i] == '"')
-                        out += "\\" + value_string_[i];
-                    else
-                        out += value_string_[i];
+                    if (value_string_[i] == '"' or value_string_[i] == '\\')
+                        out += "\\";
+                    out += value_string_[i];
                 }
                 out += "\"";
                 break;
@@ -77,22 +76,18 @@ namespace nets{
                 break;
             case 6:
                 out += "{";
-                int k = 0;
-                for (auto n : value_map_){
-                    if (k != 0){
+                bool first = true;
+                for(auto v : value_map_){
+                    if(!first)
                         out += ", ";
-                    }
-                    ++k;
-
+                    first = false;
                     out += "\"";
-                    for (int i = 0; i < n.first.size(); ++i){
-                        if(n.first[i] == '\"' or n.first[i] == '\\' or n.first[i] == '"')
-                            out += "\\" + char(n.first[i]);
-                        else
-                            out += char(n.first[i]);
+                    for (int i = 0; i < v.first.size(); ++i) {
+                        if (v.first[i] == '"' or v.first[i] == '\\')
+                            out += "\\";
+                        out += v.first[i];
                     }
-                    out += "\": " + n.second.ToString();
-
+                    out += "\": " + v.second.ToString();
                 }
                 out += "}";
                 break;
