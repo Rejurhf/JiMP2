@@ -15,7 +15,7 @@ public:
     //w zeszłym odcinku:
     //domyślny konstruktor
     XXX();
-    //konstruktory parametryczne
+    //konstruktory  parametryczne
     XXX(int param);
     XXX(const std::string name);
 

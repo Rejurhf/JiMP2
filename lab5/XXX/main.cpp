@@ -50,7 +50,7 @@ int MoveMain() {
     XXX one_more = make_copy(another_xxx);
     //tutaj watość tymczasowa z funkcji make_copy już jest niszczona i wywoływany jest destruktor
 
-    //...
+    //....
 
     //tutaj kończy się zakres funkcji main i wszystkie trzy obiekty tracą ważność
     //zostają wywołane więc destruktory (na wszystkich trzech, ale tylko jeden ma ważny stan)

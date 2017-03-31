@@ -23,7 +23,7 @@ XXX::XXX(const XXX& xxx) {
 }
 //operator przypisania:
 XXX & XXX::operator=(const XXX& xxx) {
-    //jeśli ktoś wpadł na pomysł x = x;
+    //jeśli ktoś wpadł na pomysł x = x ;
     if (this == &xxx) {
         return *this;
     }
