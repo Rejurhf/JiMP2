@@ -41,7 +41,7 @@ namespace memorychunk{
     MemoryChunk& MemoryChunk::operator=(const MemoryChunk &memo) {
         if (this == &memo)
             return *this;
-        delete[] arg_;
+        delete arg_;
         sz_ = memo.ChunkSize();
         this->arg_ = new int8_t[sz_];
         std::copy(memo.arg_, (memo.arg_ + sz_), arg_);
@@ -50,7 +50,7 @@ namespace memorychunk{
     MemoryChunk& MemoryChunk::operator=(MemoryChunk &&memo){
         if (this == &memo)
             return *this;
-        delete[] arg_;
+        delete arg_;
         arg_ = nullptr;
         sz_ = 0;
         std::swap(arg_, memo.arg_);
