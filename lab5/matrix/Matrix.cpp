@@ -14,7 +14,7 @@ namespace algebra{
         cout<<"Empty matrix"<<endl;
     }
 
-    Matrix::Matrix(int row, int col) {
+    Matrix::Matrix(int row, int col) {                                  //matrix constructor
         cout<<"m(r,c)"<<endl;
         if((row or col) < 1){
             cout<<"Anti idiot protection"<<endl;
@@ -22,10 +22,10 @@ namespace algebra{
         }
         row_ = row;
         col_ = col;
-        this->Allocate();
+        matrix_ = this->Allocate(row_, col_);
     }
 
-    Matrix::Matrix(std::string matrixStr) {
+    Matrix::Matrix(std::string matrixStr) {                                     //string to matrix
         std::string str = matrixStr;
         if(str[0] != '['){
             cout<<"Wrong syntax";
@@ -34,7 +34,7 @@ namespace algebra{
         bool real = true;
         std::string tmpR = "", tmpI = "";
         int i = 1, numRow = 1, numCol = 0;
-        while(i < str.size()){                                  //check matrix dimensions
+        while(i < str.size()){                                                  //check matrix dimensions
             while(str[i] != ' ' and str[i] != ';' and str[i] != ']'){
                 ++i;
             }
@@ -47,12 +47,15 @@ namespace algebra{
 
         row_ = numRow;
         col_ = numCol;
-        this->Allocate();                                       //create matrix
+        cout<<"toall"<<endl;
+        matrix_ = this->Allocate(row_, col_);                                   //create matrix
+        cout<<"fromall"<<endl;
         numCol = 0;
         numRow = 0;
-        while(i < str.size()){                                  //fill matrix with values
-            while(str[i] != (' ' and ';' and ']')){             //find values
-                if(str[i] == 'i')                               //real or imaginary
+        i = 1;
+        while(i < str.size()){                                                  //fill matrix with values
+            while(str[i] != ' ' and str[i] != ';' and str[i] != ']'){           //find values
+                if(str[i] == 'i')                                               //real or imaginary
                     real = false;
                 else if(real)
                     tmpR += str[i];
@@ -60,15 +63,16 @@ namespace algebra{
                     tmpI += str[i];
                 ++i;
             }
-            matrix_[numRow][numCol].real(std::stod(tmpR, 0));   //set real value
-            matrix_[numRow][numCol].imag(std::stod(tmpI, 0));   //set imaginary value
-            if(str[i] == ';'){                                  //next row
+            matrix_[numRow][numCol].real(std::stod(tmpR, 0));                   //set real value
+            if(!real)
+                matrix_[numRow][numCol].imag(std::stod(tmpI, 0));               //set imaginary value
+            if(str[i] == ';'){                                                  //next row
                 ++numRow;
                 numCol = 0;
-            } else                                              //next column
+            } else                                                              //next column
                 ++numCol;
             ++i;
-            if(str[i] == ' ')                                   //protection in case of wrong syntax
+            if(str[i] == ' ')                                                   //protection in case of wrong syntax
                 ++i;
             real = true;
             tmpI = "";
@@ -76,7 +80,7 @@ namespace algebra{
         }
     }
 
-    Matrix::Matrix(const Matrix &matrix) {
+    Matrix::Matrix(const Matrix &matrix) {                                      //copy
         row_ = matrix.row_;
         col_ = matrix.col_;
         matrix_ = new std::complex<double> *[row_];
@@ -85,22 +89,22 @@ namespace algebra{
         }
     }
 
-    Matrix::~Matrix() {
+    Matrix::~Matrix() {                                                         //destructor
         cout<<"delete"<<endl;
         for (int i = 0; i < row_; ++i) {
             delete[] &matrix_[i];
         }
         delete matrix_;
     }
-/*
-    void Matrix::ChangeValue(int row, int col, std::complex<double> value) { //wrong implemaentation
+
+    void Matrix::ChangeValue(int row, int col, std::complex<double> value) {    //change 1 value
         if(row <= row_ and col <= col_)
             matrix_[row][col] = value;
         else
             cout<<"Out of range"<<endl;
     }
-*/
-    void Matrix::Print() {
+
+    void Matrix::Print() {                                                      //print matrix
         cout<<"print"<<endl;
         for (int i = 0; i < row_; ++i) {
             for (int j = 0; j < col_; ++j) {
@@ -112,10 +116,12 @@ namespace algebra{
         }
     }
 
-    void Matrix::Allocate(){
-        matrix_ = new std::complex<double> *[row_];
-        for (int i = 0; i < row_; ++i) {                     //create 2d array
-            matrix_[i] = new std::complex<double> [col_];
+    std::complex<double> **Matrix::Allocate(int row, int col){                  //allocate memory for  matrix
+        cout<<"all"<<endl;
+        std::complex<double> **matrix = new std::complex<double> *[row];
+        for (int i = 0; i < row; ++i) {                     //create 2d array
+            matrix[i] = new std::complex<double> [col];
         }
+        return matrix;
     }
 }
