@@ -14,8 +14,7 @@ namespace algebra{
         cout<<"Empty matrix"<<endl;
     }
 
-    Matrix::Matrix(int row, int col) {                                  //matrix constructor
-        cout<<"m(r,c)"<<endl;
+    Matrix::Matrix(int row, int col) {                                          //matrix constructor
         if((row or col) < 1){
             cout<<"Anti idiot protection"<<endl;
             return;
@@ -47,9 +46,7 @@ namespace algebra{
 
         row_ = numRow;
         col_ = numCol;
-        cout<<"toall"<<endl;
         matrix_ = this->Allocate(row_, col_);                                   //create matrix
-        cout<<"fromall"<<endl;
         numCol = 0;
         numRow = 0;
         i = 1;
@@ -85,16 +82,17 @@ namespace algebra{
         col_ = matrix.col_;
         matrix_ = new std::complex<double> *[row_];
         for (int i = 0; i < row_; ++i) {
-            matrix_[i] = matrix.matrix_[i];
+            this->matrix_[i] = matrix.matrix_[i];
         }
     }
 
-    Matrix::~Matrix() {                                                         //destructor
-        cout<<"delete"<<endl;
+    Matrix::~Matrix() {                                                                 //destructor
+        cout<<"Delete matrix"<<endl;
+        Print();
         for (int i = 0; i < row_; ++i) {
-            delete[] &matrix_[i];
+            delete [] matrix_[i];
         }
-        delete matrix_;
+        delete []matrix_;
     }
 
     void Matrix::ChangeValue(int row, int col, std::complex<double> value) {    //change 1 value
@@ -105,7 +103,6 @@ namespace algebra{
     }
 
     void Matrix::Print() {                                                      //print matrix
-        cout<<"print"<<endl;
         for (int i = 0; i < row_; ++i) {
             for (int j = 0; j < col_; ++j) {
                 if (j > 0)
@@ -117,11 +114,51 @@ namespace algebra{
     }
 
     std::complex<double> **Matrix::Allocate(int row, int col){                  //allocate memory for  matrix
-        cout<<"all"<<endl;
         std::complex<double> **matrix = new std::complex<double> *[row];
-        for (int i = 0; i < row; ++i) {                     //create 2d array
+        for (int i = 0; i < row; ++i) {                                         //create matrix
             matrix[i] = new std::complex<double> [col];
         }
         return matrix;
+    }
+
+    std::complex<double> Matrix::GetElem(int row, int col) {                   //return value
+        return matrix_[row][col];
+    }
+
+    int Matrix::GetRow() {
+        return this->row_;
+    }
+
+    int Matrix::GetCol() {
+        return this->col_;
+    }
+
+    Matrix Matrix::Add(const Matrix &other) const{                                    //add operation
+        if(this->row_ != other.row_ or this->col_ != other.row_){                     //check if add possible
+            cout<<"Wrong input"<<endl;
+            return Matrix();
+        }
+        Matrix sumMatrix(row_, col_);
+        for (int i = 0; i < this->row_; ++i) {                                        //fill with sum
+            for (int j = 0; j < this->col_; ++j) {
+                sumMatrix.matrix_[i][j] += matrix_[i][j] + other.matrix_[i][j];
+            }
+        }
+        return sumMatrix;
+    }
+
+    Matrix Matrix::Subtract(const Matrix &other) const{
+        if(this->row_ != other.row_ or this->col_ != other.col_){               //check if add possible
+            cout<<"Wrong input"<<endl;
+            return Matrix();
+        }
+        Matrix subMatrix(row_, col_);
+        for (int i = 0; i < row_; ++i) {                                        //fill with subtract
+            for (int j = 0; j < col_; ++j) {
+                subMatrix.matrix_[i][j] = matrix_[i][j] - other.matrix_[i][j];
+            }
+        }
+        cout<<other.matrix_[0][0]<<endl;
+        return subMatrix;
     }
 }

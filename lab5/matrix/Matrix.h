@@ -18,7 +18,12 @@ namespace algebra{
         ~Matrix();                                                          //delete matrix
         void ChangeValue(int row, int col, std::complex<double> value);     //change one value
         void Print();                                                       //print matrix
-        std::complex<double> **Allocate(int row, int col);                  //allocate maemory for matrix
+        std::complex<double> **Allocate(int row, int col);                  //allocate memory for matrix
+        std::complex<double> GetElem(int row, int col);                    //get value
+        int GetRow();
+        int GetCol();
+        Matrix Add(const Matrix &other) const;
+        Matrix Subtract(const Matrix &other) const;
     private:
         int row_;
         int col_;
