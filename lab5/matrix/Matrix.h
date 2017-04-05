@@ -16,14 +16,17 @@ namespace algebra{
         Matrix(std::string matrixStr);                                      //string to matrix
         Matrix(const Matrix &matrix);                                       //copy
         ~Matrix();                                                          //delete matrix
-        void ChangeValue(int row, int col, std::complex<double> value);     //change one value
-        void Print();                                                       //print matrix
-        std::complex<double> **Allocate(int row, int col);                  //allocate memory for matrix
-        std::complex<double> GetElem(int row, int col);                    //get value
-        int GetRow();
-        int GetCol();
-        Matrix Add(const Matrix &other) const;
-        Matrix Subtract(const Matrix &other) const;
+        void changeValue(int row, int col, std::complex<double> value);     //change one value
+        void print();                                                       //print matrix
+        std::complex<double> **allocate(int row, int col);                  //allocate memory for matrix
+        std::complex<double> getElem(int row, int col) const;               //get value
+        int getRow() const;
+        int getCol() const;
+        Matrix add(const Matrix &other) const;
+        Matrix subtract(const Matrix &other) const;
+        Matrix multiply(const Matrix &other) const;
+        std::complex<double> cellMulti(int row, int col, const Matrix &other) const;
+        int Size() const;
     private:
         int row_;
         int col_;

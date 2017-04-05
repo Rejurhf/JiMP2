@@ -21,7 +21,7 @@ namespace algebra{
         }
         row_ = row;
         col_ = col;
-        matrix_ = this->Allocate(row_, col_);
+        matrix_ = this->allocate(row_, col_);
     }
 
     Matrix::Matrix(std::string matrixStr) {                                     //string to matrix
@@ -46,7 +46,7 @@ namespace algebra{
 
         row_ = numRow;
         col_ = numCol;
-        matrix_ = this->Allocate(row_, col_);                                   //create matrix
+        matrix_ = this->allocate(row_, col_);                                   //create matrix
         numCol = 0;
         numRow = 0;
         i = 1;
@@ -78,31 +78,32 @@ namespace algebra{
     }
 
     Matrix::Matrix(const Matrix &matrix) {                                      //copy
-        row_ = matrix.row_;
-        col_ = matrix.col_;
-        matrix_ = new std::complex<double> *[row_];
+        this->row_ = matrix.row_;
+        this->col_ = matrix.col_;
+        this->matrix_ = new std::complex<double> *[row_];
         for (int i = 0; i < row_; ++i) {
             this->matrix_[i] = matrix.matrix_[i];
         }
     }
 
-    Matrix::~Matrix() {                                                                 //destructor
+    Matrix::~Matrix() {                                                          //destructor
         cout<<"Delete matrix"<<endl;
-        Print();
+        /*
         for (int i = 0; i < row_; ++i) {
             delete [] matrix_[i];
         }
         delete []matrix_;
+         */
     }
 
-    void Matrix::ChangeValue(int row, int col, std::complex<double> value) {    //change 1 value
+    void Matrix::changeValue(int row, int col, std::complex<double> value) {    //change 1 value
         if(row <= row_ and col <= col_)
             matrix_[row][col] = value;
         else
             cout<<"Out of range"<<endl;
     }
 
-    void Matrix::Print() {                                                      //print matrix
+    void Matrix::print() {                                                      //print matrix
         for (int i = 0; i < row_; ++i) {
             for (int j = 0; j < col_; ++j) {
                 if (j > 0)
@@ -113,7 +114,7 @@ namespace algebra{
         }
     }
 
-    std::complex<double> **Matrix::Allocate(int row, int col){                  //allocate memory for  matrix
+    std::complex<double> **Matrix::allocate(int row, int col){                  //allocate memory for  matrix
         std::complex<double> **matrix = new std::complex<double> *[row];
         for (int i = 0; i < row; ++i) {                                         //create matrix
             matrix[i] = new std::complex<double> [col];
@@ -121,44 +122,71 @@ namespace algebra{
         return matrix;
     }
 
-    std::complex<double> Matrix::GetElem(int row, int col) {                   //return value
+    std::complex<double> Matrix::getElem(int row, int col) const {                   //return value
         return matrix_[row][col];
     }
 
-    int Matrix::GetRow() {
+    int Matrix::getRow() const {
         return this->row_;
     }
 
-    int Matrix::GetCol() {
+    int Matrix::getCol() const {
         return this->col_;
     }
 
-    Matrix Matrix::Add(const Matrix &other) const{                                    //add operation
-        if(this->row_ != other.row_ or this->col_ != other.row_){                     //check if add possible
+    Matrix Matrix::add(const Matrix &other) const{                                      //add operation
+        if(this->row_ != other.row_ or this->col_ != other.row_){                       //check if add possible
             cout<<"Wrong input"<<endl;
             return Matrix();
         }
         Matrix sumMatrix(row_, col_);
-        for (int i = 0; i < this->row_; ++i) {                                        //fill with sum
-            for (int j = 0; j < this->col_; ++j) {
-                sumMatrix.matrix_[i][j] += matrix_[i][j] + other.matrix_[i][j];
+        for (int i = 0; i < sumMatrix.getRow(); ++i) {                                          //fill with sum
+            for (int j = 0; j < sumMatrix.getCol(); ++j) {
+                sumMatrix.matrix_[i][j] += matrix_[i][j] + other.getElem(i, j);
             }
         }
         return sumMatrix;
     }
 
-    Matrix Matrix::Subtract(const Matrix &other) const{
-        if(this->row_ != other.row_ or this->col_ != other.col_){               //check if add possible
+    Matrix Matrix::subtract(const Matrix &other) const{
+        if(this->row_ != other.row_ or this->col_ != other.col_){                       //check if subtract possible
             cout<<"Wrong input"<<endl;
             return Matrix();
         }
         Matrix subMatrix(row_, col_);
-        for (int i = 0; i < row_; ++i) {                                        //fill with subtract
-            for (int j = 0; j < col_; ++j) {
-                subMatrix.matrix_[i][j] = matrix_[i][j] - other.matrix_[i][j];
+        for (int i = 0; i < subMatrix.getRow(); ++i) {                                          //fill with subtract
+            for (int j = 0; j < subMatrix.getCol(); ++j) {
+                subMatrix.matrix_[i][j] = matrix_[i][j] - other.getElem(i, j);
             }
         }
-        cout<<other.matrix_[0][0]<<endl;
         return subMatrix;
+    }
+
+    Matrix Matrix::multiply(const Matrix &other) const{
+        if(this->row_ != other.getCol() or this->col_ != other.getRow()){       //check if multiply possible
+            cout<<"Wrong input"<<endl;
+            return Matrix();
+        }
+        Matrix multiMatrix(row_, other.getCol());
+        for (int i = 0; i < multiMatrix.getRow(); ++i) {                        //fill with multiplication
+            for (int j = 0; j < multiMatrix.getCol(); ++j) {
+                multiMatrix.matrix_[i][j] = this->cellMulti(i, j, other);       //count cell by cell using method
+            }
+        }
+        return multiMatrix;
+    }
+
+    std::complex<double> Matrix::cellMulti(int rowM, int colO, const Matrix &other) const {     //passed row of matrix and col of other which will by multiplied
+        std::complex<double> value = 0i;
+        int numRow = other.getRow();                                    //number of operation equals to row of other, or col of matrix
+        for (int i = 0; i < numRow; ++i) {
+            value += this->matrix_[rowM][i] * other.getElem(i, colO);   //sum of multiplication
+            cout<<value<<endl;
+        }
+        return value;
+    }
+
+    int Matrix::Size() const{
+        return row_ * col_;
     }
 }
