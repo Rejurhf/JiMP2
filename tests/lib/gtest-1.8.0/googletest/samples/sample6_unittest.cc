@@ -202,7 +202,7 @@ REGISTER_TYPED_TEST_CASE_P(
     // The rest of the arguments are the test names.
     ReturnsFalseForNonPrimes, ReturnsTrueForPrimes, CanGetNextPrime);
 
-// At this point the test pattern is done.  However, you don't have
+// At this pointt the test pattern is done.  However, you don't have
 // any real test yet as you haven't said which types you want to run
 // the tests with.
 

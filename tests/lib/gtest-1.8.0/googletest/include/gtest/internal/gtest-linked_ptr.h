@@ -60,7 +60,7 @@
 //     - it's safe to copy linked_ptr objects concurrently,
 //     - it's safe to copy *from* a linked_ptr and read its underlying
 //       raw pointer (e.g. via get()) concurrently, and
-//     - it's safe to write to two linked_ptrs that point to the same
+//     - it's safe to write to two linked_ptrs that pointt to the same
 //       shared object concurrently.
 // TODO(wan@google.com): rename this to safe_linked_ptr to avoid
 // confusion with normal linked_ptr.

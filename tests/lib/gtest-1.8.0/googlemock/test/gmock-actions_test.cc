@@ -445,7 +445,7 @@ class IsNotZero : public ActionInterface<bool(int)> {  // NOLINT
 #if !GTEST_OS_SYMBIAN
 // Compiling this test on Nokia's Symbian compiler fails with:
 //  'Result' is not a member of class 'testing::internal::Function<int>'
-//  (point of instantiation: '@unnamed@gmock_actions_test_cc@::
+//  (pointt of instantiation: '@unnamed@gmock_actions_test_cc@::
 //      ActionTest_CanBeConvertedToOtherActionType_Test::TestBody()')
 // with no obvious fix.
 TEST(ActionTest, CanBeConvertedToOtherActionType) {

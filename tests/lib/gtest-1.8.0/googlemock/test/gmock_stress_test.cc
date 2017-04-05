@@ -121,10 +121,10 @@ void TestConcurrentCopyAndReadLinkedPtr(Dummy /* dummy */) {
 
 const linked_ptr<Derived1> p0(new Derived1(1, 2));
 
-// Tests that we can concurrently modify two linked_ptrs that point to
+// Tests that we can concurrently modify two linked_ptrs that pointt to
 // the same object.
 void TestConcurrentWriteToEqualLinkedPtr(Dummy /* dummy */) {
-  // p1 and p2 point to the same, shared thing.  One thread resets p1.
+  // p1 and p2 pointt to the same, shared thing.  One thread resets p1.
   // Another thread assigns to p2.  This will cause the same
   // underlying "ring" to be updated concurrently.
   linked_ptr<Derived1> p1(p0);
@@ -294,7 +294,7 @@ TEST(StressTest, CanUseGMockWithThreads) {
     GTEST_LOG_(INFO) << "Thread #" << i << " running . . .";
   }
 
-  // At this point, we have many threads running.
+  // At this pointt, we have many threads running.
   for (int i = 0; i < kTestThreads; i++) {
     JoinAndDelete(threads[i]);
   }

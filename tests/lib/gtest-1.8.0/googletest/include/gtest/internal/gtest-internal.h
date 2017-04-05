@@ -95,7 +95,7 @@ template <typename T>
 
 namespace internal {
 
-struct TraceInfo;                      // Information about a trace point.
+struct TraceInfo;                      // Information about a trace pointt.
 class ScopedTrace;                     // Implements scoped trace.
 class TestInfoImpl;                    // Opaque implementation of TestInfo
 class UnitTestImpl;                    // Opaque implementation of UnitTest
@@ -229,7 +229,7 @@ GTEST_API_ std::string GetBoolAssertionFailureMessage(
     const char* actual_predicate_value,
     const char* expected_predicate_value);
 
-// This template class represents an IEEE floating-point number
+// This template class represents an IEEE floating-pointt number
 // (either single-precision or double-precision, depending on the
 // template parameters).
 //
@@ -238,10 +238,10 @@ GTEST_API_ std::string GetBoolAssertionFailureMessage(
 // two floating-points will be equal exactly.  Hence a naive
 // comparison by the == operation often doesn't work.)
 //
-// Format of IEEE floating-point:
+// Format of IEEE floating-pointt:
 //
 //   The most-significant bit being the leftmost, an IEEE
-//   floating-point looks like
+//   floating-pointt looks like
 //
 //     sign_bit exponent_bits fraction_bits
 //
@@ -257,12 +257,12 @@ GTEST_API_ std::string GetBoolAssertionFailureMessage(
 //
 // Template parameter:
 //
-//   RawType: the raw floating-point type (either float or double)
+//   RawType: the raw floating-pointt type (either float or double)
 template <typename RawType>
 class FloatingPoint {
  public:
   // Defines the unsigned integer type that has the same size as the
-  // floating point number.
+  // floating pointt number.
   typedef typename TypeWithSize<sizeof(RawType)>::UInt Bits;
 
   // Constants.
@@ -292,8 +292,8 @@ class FloatingPoint {
   // allow.  A 0 value means that two numbers must be exactly the same
   // to be considered equal.
   //
-  // The maximum error of a single floating-point operation is 0.5
-  // units in the last place.  On Intel CPU's, all floating-point
+  // The maximum error of a single floating-pointt operation is 0.5
+  // units in the last place.  On Intel CPU's, all floating-pointt
   // calculations are done with 80-bit precision, while double has 64
   // bits.  Therefore, 4 should be enough for ordinary use.
   //
@@ -301,7 +301,7 @@ class FloatingPoint {
   // http://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/
   static const size_t kMaxUlps = 4;
 
-  // Constructs a FloatingPoint from a raw floating-point number.
+  // Constructs a FloatingPoint from a raw floating-pointt number.
   //
   // On an Intel CPU, passing a non-normalized NAN (Not a Number)
   // around may change its bits, although the new value is guaranteed
@@ -311,7 +311,7 @@ class FloatingPoint {
 
   // Static methods
 
-  // Reinterprets a bit pattern as a floating-point number.
+  // Reinterprets a bit pattern as a floating-pointt number.
   //
   // This function is needed to test the AlmostEquals() method.
   static RawType ReinterpretBits(const Bits bits) {
@@ -320,12 +320,12 @@ class FloatingPoint {
     return fp.u_.value_;
   }
 
-  // Returns the floating-point number that represent positive infinity.
+  // Returns the floating-pointt number that represent positive infinity.
   static RawType Infinity() {
     return ReinterpretBits(kExponentBitMask);
   }
 
-  // Returns the maximum representable finite floating-point number.
+  // Returns the maximum representable finite floating-pointt number.
   static RawType Max();
 
   // Non-static methods
@@ -365,9 +365,9 @@ class FloatingPoint {
   }
 
  private:
-  // The data type used to store the actual floating-point number.
+  // The data type used to store the actual floating-pointt number.
   union FloatingPointUnion {
-    RawType value_;  // The raw floating-point number.
+    RawType value_;  // The raw floating-pointt number.
     Bits bits_;      // The bits that represent the number.
   };
 

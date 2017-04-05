@@ -224,10 +224,10 @@ class GTestFlagSaver {
   bool throw_on_failure_;
 } GTEST_ATTRIBUTE_UNUSED_;
 
-// Converts a Unicode code point to a narrow string in UTF-8 encoding.
+// Converts a Unicode code pointt to a narrow string in UTF-8 encoding.
 // code_point parameter is of type UInt32 because wchar_t may not be
-// wide enough to contain a code point.
-// If the code_point is not a valid Unicode code point
+// wide enough to contain a code pointt.
+// If the code_point is not a valid Unicode code pointt
 // (i.e. outside of Unicode range U+0 to U+10FFFF) it will be converted
 // to "(Invalid Unicode 0xXXXXXXXX)".
 GTEST_API_ std::string CodePointToUtf8(UInt32 code_point);
@@ -453,7 +453,7 @@ class OsStackTraceGetter : public OsStackTraceGetterInterface {
   GTEST_DISALLOW_COPY_AND_ASSIGN_(OsStackTraceGetter);
 };
 
-// Information about a Google Test trace point.
+// Information about a Google Test trace pointt.
 struct TraceInfo {
   const char* file;
   int line;

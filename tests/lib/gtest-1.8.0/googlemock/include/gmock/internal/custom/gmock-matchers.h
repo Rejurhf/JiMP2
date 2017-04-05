@@ -28,7 +28,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // ============================================================
-// An installation-specific extension point for gmock-matchers.h.
+// An installation-specific extension pointt for gmock-matchers.h.
 // ============================================================
 //
 // Adds google3 callback support to CallableTraits.

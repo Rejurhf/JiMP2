@@ -1624,7 +1624,7 @@ namespace internal {
 //
 // Template parameter:
 //
-//   RawType: the raw floating-point type (either float or double)
+//   RawType: the raw floating-pointt type (either float or double)
 //
 // INTERNAL IMPLEMENTATION - DO NOT USE IN A USER PROGRAM.
 template <typename RawType>
@@ -2010,7 +2010,7 @@ class TestWithParam : public Test, public WithParamInterface<T> {
 #define ASSERT_STRCASENE(s1, s2)\
   ASSERT_PRED_FORMAT2(::testing::internal::CmpHelperSTRCASENE, s1, s2)
 
-// Macros for comparing floating-point numbers.
+// Macros for comparing floating-pointt numbers.
 //
 //    * {ASSERT|EXPECT}_FLOAT_EQ(val1, val2):
 //         Tests that two float values are almost equal.
@@ -2048,7 +2048,7 @@ class TestWithParam : public Test, public WithParamInterface<T> {
   ASSERT_PRED_FORMAT3(::testing::internal::DoubleNearPredFormat, \
                       val1, val2, abs_error)
 
-// These predicate format functions work on floating-point values, and
+// These predicate format functions work on floating-pointt values, and
 // can be used in {ASSERT|EXPECT}_PRED_FORMAT2*(), e.g.
 //
 //   EXPECT_PRED_FORMAT2(testing::DoubleLE, Foo(), 5.0);

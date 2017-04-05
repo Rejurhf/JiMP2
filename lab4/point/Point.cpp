@@ -19,41 +19,41 @@ using ::std::sqrt;
 
 //Specjalna inicjalizacja zmiennych. Zmienne są inicjowane
 //nim zostanie wywołane ciało konstruktora
-Point::Point():x_(0),y_(0){
+Pointt::Pointt():x_(0),y_(0){
     cout << "Konstruktor bezparametrowy" << endl;
 }
 
-Point::Point(double x, double y){
+Pointt::Pointt(double x, double y){
     cout << "Konstruktor parametrowy" << endl;
     x_ = x;
     y_ = y;
 }
 
-Point::~Point(){
+Pointt::~Pointt(){
     cout << "Destruktor! Nic nie robie, bo nie musze zwalniać pamięci!";
     cout << endl;
 }
 
-double Point::GetX() const{
+double Pointt::GetX() const{
     return x_;
 }
 
-double Point::GetY() const{
+double Pointt::GetY() const{
     return y_;
 }
 
-void Point::SetX(double x){
+void Pointt::SetX(double x){
     this->x_ = x;
 }
 
-void Point::SetY(double y){
+void Pointt::SetY(double y){
     this->y_ = y;
 }
 
-double Point::Distance(const Point &other) const{
+double Pointt::Distance(const Pointt &other) const{
     return sqrt(pow(GetX()-other.GetX(),2)+pow(GetY()-other.GetY(),2));
 }
 
-void Point::ToString(ostream *out) const{
+void Pointt::ToString(ostream *out) const{
     (*out) << "(" << GetX() << ";" << GetY() << ")";
 }

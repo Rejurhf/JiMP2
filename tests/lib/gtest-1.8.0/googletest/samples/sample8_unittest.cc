@@ -165,8 +165,8 @@ INSTANTIATE_TEST_CASE_P(MeaningfulTestParameters,
 // Google Test may not support Combine() with some compilers. If we
 // use conditional compilation to compile out all code referring to
 // the gtest_main library, MSVC linker will not link that library at
-// all and consequently complain about missing entry point defined in
-// that library (fatal error LNK1561: entry point must be
+// all and consequently complain about missing entry pointt defined in
+// that library (fatal error LNK1561: entry pointt must be
 // defined). This dummy test keeps gtest_main linked in.
 TEST(DummyTest, CombineIsNotSupportedOnThisPlatform) {}
 
