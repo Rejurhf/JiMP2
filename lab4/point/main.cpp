@@ -6,8 +6,8 @@
 #include "Point.h"
 
 int main(){
-    Pointt p1 = Pointt(0, 0);
-    Pointt p2 = Pointt(1, 0);
+    Point p1 = Point(0, 0);
+    Point p2 = Point(1, 0);
     p1.ToString(&std::cout);
     std::cout<<" ";
     p2.ToString(&std::cout);

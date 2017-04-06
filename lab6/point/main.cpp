@@ -1,9 +1,9 @@
 //
-// Created by Rejurhf on 28.03.2017.
+// Created by Rejurhf on 06.04.2017.
 //
 
 #include <iostream>
-#include "Point.h"
+#include "Point2.h"
 
 int main(){
     Point p1 = Point(0, 0);
@@ -12,6 +12,5 @@ int main(){
     std::cout<<" ";
     p2.ToString(&std::cout);
     std::cout<<std::endl<<"Odlaeglosc miedzy nimi to: "<<p1.Distance(p2)<<std::endl;
-    //std::cin >> p1;
     return 0;
 }

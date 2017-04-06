@@ -1,11 +1,12 @@
 //
-// Created by Rejurhf on 22.03.2017.
+// Created by Rejurhf on 06.04.2017.
 //
 
 #include <cmath>
 #include <ostream>
 #include <iostream>
-#include "Point.h"
+#include <iomanip>
+#include "Point2.h"
 
 using ::std::ostream;
 using ::std::endl;
@@ -58,9 +59,10 @@ double Point::Distance(const Point &other) const{
 
 void Point::ToString(ostream *out) const{
     (*out) << "(" << GetX() << ";" << GetY() << ")";
+
+    std::istream& operator>>(std::istream &is, Point& point);
 }
 
-//Helper functions:
 void CheckNextChar(char c, istream* is) {
     int next_char = is->peek();
     if (next_char != c) {

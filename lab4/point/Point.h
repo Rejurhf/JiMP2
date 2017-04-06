@@ -5,19 +5,19 @@
 #ifndef JIMP_EXERCISES_POINT_H
 #define JIMP_EXERCISES_POINT_H
 
-class Pointt {
+class Point {
     public:
         //Konstruktor bezparametrowy
-        Pointt();
+        Point();
         //Konstruktor parametrowy
-        Pointt(double x, double y);
+        Point(double x, double y);
         //Destruktor wykonywany przed zwolnieniem pamięci
-        ~Pointt();
+        ~Point();
 
         //Metody nie modyfikujące stanu obiektu (const na końcu metody)
         //nie mogą zmodyfikować tego obiektu.
         void ToString(std::ostream *out) const;
-        double Distance(const Pointt &other) const;
+        double Distance(const Point &other) const;
 
         //metody akcesorów są publiczne i tylko w przy ich pomocy
         //można się dostać z zewnątrz do pól klasy
