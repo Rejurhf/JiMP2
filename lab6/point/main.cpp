@@ -12,5 +12,8 @@ int main(){
     std::cout<<" ";
     p2.ToString(&std::cout);
     std::cout<<std::endl<<"Odlaeglosc miedzy nimi to: "<<p1.Distance(p2)<<std::endl;
+
+    std::cin >> p1;
+    std::cout << p1;
     return 0;
 }

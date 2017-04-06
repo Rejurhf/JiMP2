@@ -72,6 +72,7 @@ void CheckNextChar(char c, istream* is) {
 }
 
 void IgnoreWhitespace(istream* is) {
+    char ws = ' ';
     (*is) >> ws;
 }
 
@@ -85,7 +86,7 @@ double ReadNumber(istream* is) {
 //są zadeklarowane jako const, bo obydwa są modyfikowane
 //wewnątrz funkcji (STL nie używa naszej konwencji z przekazywaniem
 //przez wskaźnik)
-istream& Point::operator>>(istream & input, Point& p){
+istream& operator>>(istream & input, Point& p){
     CheckNextChar('(', &input);
     p.SetX(ReadNumber(&input));
     CheckNextChar(',', &input);
@@ -93,4 +94,8 @@ istream& Point::operator>>(istream & input, Point& p){
     p.SetY(ReadNumber(&input));
     CheckNextChar(')', &input);
     return input;      // Umożliwia cin >> a >> b >> c;
+}
+
+std::ostream& operator<<(std::ostream &out, const Point& point){
+    out << "(" << point.GetX() << ";" << point.GetY() << ")"<<std::endl;
 }

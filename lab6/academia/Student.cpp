@@ -4,3 +4,6 @@
 
 #include "Student.h"
 
+namespace academia{
+
+}
