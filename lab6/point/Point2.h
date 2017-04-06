@@ -29,7 +29,7 @@ public:
     void SetX(double x);
     void SetY(double y);
 
-    friend std::istream& operator>>(std::istream &, Point&);
+    //friend std::istream& operator>>(std::istream &, Point&);
     //friend std::ostream& operator<<(std::ostream &, const Point&);
 private:
     //w przeciwienstwie do pythona C++ wymaga jawnej deklaracji składowych pól klasy:

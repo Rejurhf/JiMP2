@@ -72,7 +72,6 @@ void CheckNextChar(char c, istream* is) {
 }
 
 void IgnoreWhitespace(istream* is) {
-    char ws = ' ';
     (*is) >> ws;
 }
 

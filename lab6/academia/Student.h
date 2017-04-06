@@ -8,21 +8,36 @@
 #include <string>
 
 namespace academia {
-    struct StudyYear {
-        int year;
+    class StudyYear {
+    public:
+        StudyYear &operator++(){
+            ++year_;
+            return *this;
+        };
+
+        StudyYear &operator--(){
+            --year_;
+            return *this;
+        };
+    private:
+        int year_;
     };
 
     class Student {
     public:
         Student();
-        friend Student &operator++();
-        friend Student operator(int);
+        void setId(std::string id);
+        void setFirstName(std::string first_name);
+        void setSecondName(std::string second_name;
+        void setProgram(std::string program);
+        void setStudyYear(int study_year);
+
+        friend std::istream& operator>>(std::istream &, Student&);
     private:
         std::string id_, first_name_, second_name_, program_;
-        StudyYear yera_;
+        StudyYear studyYear_;
     };
+    std::istream& operator>>(std::istream &in, Student& student);
 }
 
-Student &operator++();
-Student operator(int);
 #endif //JIMP_EXERCISES_STUDENT_H
