@@ -22,4 +22,34 @@ namespace academia{
     StudyYear StudyYear::setYear(int year) {
         this->year_ = year;
     }
+
+    StudyYear StudyYear::getYear() const {
+        return year_;
+    }
+
+    istream& operator>>(istream &in, StudyYear &year){
+        std::string str;
+        in >> str;
+        year.setYear(atoi(str));
+    }
+
+    ostream& operator<<(ostream &out, const StudyYear &year){
+        out << year.getYear();
+    }
+
+    bool operator>(const StudyYear first, const StudyYear second){
+        return (first.GetYear() > second.GetYear());
+    }
+
+    bool operator>=(const StudyYear first, const StudyYear second){
+        return (first.GetYear() >= second.GetYear());
+    }
+
+    bool operator<(const StudyYear first, const StudyYear second){
+        return (first.GetYear() < second.GetYear());
+    }
+
+    bool operator<=(const StudyYear first, const StudyYear second){
+        return (first.GetYear() <= second.GetYear());
+    }
 }

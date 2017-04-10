@@ -1,16 +1,19 @@
 //
-// Created by Rejurhf on 06.04.2017.
+// Created by Rejurhf on 10.04.2017.
 //
 
-#ifndef JIMP_EXERCISES_STUDENT_H
-#define JIMP_EXERCISES_STUDENT_H
+#ifndef JIMP_EXERCISES_STUDENTREPOSITORY_H
+#define JIMP_EXERCISES_STUDENTREPOSITORY_H
 
-#include <string>
 #include "Student.h"
-#include "StudyYear.h"
 
 namespace academia {
+    class StudentRepository {
+    public:
 
+    private:
+        std::vector<Student> studentGroup_;
+    };
 }
 
-#endif //JIMP_EXERCISES_STUDENT_H
+#endif //JIMP_EXERCISES_STUDENTREPOSITORY_H
