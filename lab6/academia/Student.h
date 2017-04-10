@@ -1,43 +1,39 @@
 //
-// Created by Rejurhf on 06.04.2017.
+// Created by Rejurhf on 10.04.2017.
 //
 
 #ifndef JIMP_EXERCISES_STUDENT_H
 #define JIMP_EXERCISES_STUDENT_H
 
 #include <string>
+#include "StudyYear.h"
 
-namespace academia {
-    class StudyYear {
-    public:
-        StudyYear &operator++(){
-            ++year_;
-            return *this;
-        };
+using ::std::string;
+using ::std::istream;
 
-        StudyYear &operator--(){
-            --year_;
-            return *this;
-        };
-    private:
-        int year_;
-    };
-
+namespace academia{
     class Student {
     public:
         Student();
-        void setId(std::string id);
-        void setFirstName(std::string first_name);
-        void setSecondName(std::string second_name;
-        void setProgram(std::string program);
+        Student(string id, string first, string second, string program, int year);
+        void setId(string id);
+        void setFirstName(string first_name);
+        void setSecondName(string second_name);
+        void setProgram(string program);
         void setStudyYear(int study_year);
+        string getId() const;
+        string getFirstName() const;
+        string getSecondName() const;
+        string getProgram() const;
+        StudyYear getStudyYear() const;
 
-        friend std::istream& operator>>(std::istream &, Student&);
+        friend istream& operator>>(istream &in, Student &s);
+        friend class StudyYear;
     private:
         std::string id_, first_name_, second_name_, program_;
         StudyYear studyYear_;
     };
-    std::istream& operator>>(std::istream &in, Student& student);
+    istream& operator>>(istream &in, Student& student);
 }
 
 #endif //JIMP_EXERCISES_STUDENT_H
