@@ -34,6 +34,10 @@ namespace arrays {
         std::uniform_int_distribution<int> distributor_;
     };
 
+    class SquaredFill : public Filler{
+
+    };
+
     void FillArray(int size, Filler &filler, std::vector<int> *v);
 }
 
