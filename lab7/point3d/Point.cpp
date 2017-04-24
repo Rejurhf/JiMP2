@@ -16,6 +16,8 @@ using ::std::sqrt;
 using ::std::istream;
 using ::std::ws;
 
+//Odpowiedzi w pliku Point3D.h
+
 Point::~Point() {
     std::cout<<"Destruktor 2D ("<<x_<<","<<y_<<")"<<std::endl;
 }

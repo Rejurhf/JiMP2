@@ -7,12 +7,14 @@
 
 #include <iostream>
 
+//Odpowiedzi w pliku Point3D.h
+
 class Point {
 public:
-    Point(double x = 0, double y = 0): x_(x), y_(y){                    //Włącza się konstruktor 2D
+    Point(double x = 0, double y = 0): x_(x), y_(y){
         std::cout<<"Constructor Point2D ("<<x<<","<<y<<")"<<std::endl;
     };
-    ~Point();                                                           //Włącza się destruktor 2D
+    ~Point();
     void ToString(std::ostream *out) const;
     double Distance(const Point &other) const;
     double GetX() const{return x_;};
