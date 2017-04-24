@@ -5,15 +5,14 @@
 #include "Ksztalt.h"
 #include <random>
 #include <list>
-
-using std::list;
+#include <iostream>
 
 int main(){
     srand(time(NULL));
     Trojkat *t;
     Kolo *ko;
     Kwadrat *kw;
-    list<Ksztalt> ksztalty;
+    std::vector<Ksztalt*> ksztalty;
     for (int i = 0; i < 10; ++i) {
         switch(rand() % 3){
             case 0:
@@ -25,10 +24,12 @@ int main(){
             case 2:
                 ksztalty.emplace_back(ko);
                 break;
+            default:
+                std::cout<<"Error"<<std::endl;
         }
     }
-    for(list<Ksztalt>::iterator i = ksztalty.begin(); i != ksztalty.end(); ++i){
-        (*i).rysuj();
+    for(auto v: ksztalty){
+        v->rysuj();
     }
     return 0;
 }
