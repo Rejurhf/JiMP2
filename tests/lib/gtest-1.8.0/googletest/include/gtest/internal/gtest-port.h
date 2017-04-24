@@ -1385,7 +1385,7 @@ inline To DownCast_(From* f) {  // so we only accept pointers
 
 // Downcasts the pointer of type Base to Derived.
 // Derived must be a subclass of Base. The parameter MUST
-// point to a class of type Derived, not any subclass of it.
+// pointt to a class of type Derived, not any subclass of it.
 // When RTTI is available, the function performs a runtime
 // check to enforce this.
 template <class Derived, class Base>
@@ -2451,7 +2451,7 @@ const BiggestInt kMaxBiggestInt =
 // Such functionality should belong to STL, but I cannot find it
 // there.
 //
-// Google Test uses this class in the implementation of floating-point
+// Google Test uses this class in the implementation of floating-pointt
 // comparison.
 //
 // For now it only handles UInt (unsigned int) as that's all Google Test
