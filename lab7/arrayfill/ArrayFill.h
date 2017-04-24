@@ -60,4 +60,4 @@ namespace arrays {
     void FillArray(int size, const Filler &filler, std::vector<int> *v);
 }
 
-#endif //JIMP_EXERCISES_ARRAYFILL_H
+#endif //JIMP_EXERCISES_ARRAYFILL_Ha
