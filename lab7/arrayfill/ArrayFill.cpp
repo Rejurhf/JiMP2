@@ -5,7 +5,7 @@
 #include "ArrayFill.h"
 
 namespace arrays {
-    void FillArray(int size, Filler &filler, std::vector<int> *v) {
+    void FillArray(int size, const Filler &filler, std::vector<int> *v) {
         v->clear();
         v->reserve(size);
         for (int i = 0; i < size; i++) {
@@ -13,11 +13,19 @@ namespace arrays {
         }
     }
 
-    int IncrementalFill::fill(int index) {
-        return value_a_ * index + value_b_;
+    int IncrementalFill::fill(int index) const{
+        return value_multiply_ * index + value_start_;
     }
 
-    int RandomFill::fill(int index) {
-        return distributor_(generator_);
+    int RandomFill::fill(int index) const{
+        return (*distributor_)(*generator_);
+    }
+
+    int SquaredFill::fill(int index) const{
+        return value_multiply_ * index * index + value_start_;
+    }
+
+    int UniformFill::fill(int index) const{
+        return value_;
     }
 }
