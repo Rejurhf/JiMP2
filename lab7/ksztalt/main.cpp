@@ -9,20 +9,23 @@
 
 int main(){
     srand(time(NULL));
-    Trojkat *t;
-    Kolo *ko;
-    Kwadrat *kw;
-    std::vector<Ksztalt*> ksztalty;
+    std::list<Ksztalt*> ksztalty;
     for (int i = 0; i < 10; ++i) {
         switch(rand() % 3){
-            case 0:
-                ksztalty.emplace_back(t);
+            case 0: {
+                Trojkat t;
+                ksztalty.emplace_back(&t);
+            }
                 break;
-            case 1:
-                ksztalty.emplace_back(kw);
+            case 1: {
+                Kwadrat kw;
+                ksztalty.emplace_back(&kw);
+            }
                 break;
-            case 2:
-                ksztalty.emplace_back(ko);
+            case 2: {
+                Kolo ko;
+                ksztalty.emplace_back(&ko);
+            }
                 break;
             default:
                 std::cout<<"Error"<<std::endl;

@@ -11,17 +11,17 @@ public:
 };
 
 class Trojkat: public Ksztalt{
-    Trojkat();
+public:
     virtual void rysuj() const override;
 };
 
 class Kwadrat: public Ksztalt{
-    Kwadrat();
+public:
     virtual void rysuj() const override;
 };
 
 class Kolo: public Ksztalt{
-    Kolo();
+public:
     virtual void rysuj() const override;
 };
 
