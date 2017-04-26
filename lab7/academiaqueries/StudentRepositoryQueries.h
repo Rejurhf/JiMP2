@@ -1,0 +1,14 @@
+//
+// Created by Rejurhf on 24.04.2017.
+//
+
+#ifndef JIMP_EXERCISES_STUDENTREPOSITORYQUERIES_H
+#define JIMP_EXERCISES_STUDENTREPOSITORYQUERIES_H
+
+
+class StudentRepositoryQueries {
+
+};
+
+
+#endif //JIMP_EXERCISES_STUDENTREPOSITORYQUERIES_H
