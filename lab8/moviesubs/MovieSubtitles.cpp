@@ -2,10 +2,10 @@
 // Created by Rejurhf on 03.05.2017.
 //
 
-#include "MicroDVDSubtitles.h"
+#include "MovieSubtitles.h"
 
-namespace subtitles{
-    void MicroDVDSubtitles::ShiftSubtitlesBy(std::stringstream *in, std::stringstream *out, int delay, int fps){
+namespace moviesubs{
+    void MicroDvdSubtitles::ShiftSubtitlesBy(std::stringstream *in, std::stringstream *out, int delay, int fps){
         if(fps<0)
             throw std::invalid_argument("fps");
         std::string str;

@@ -1,8 +1,8 @@
 
 project(microdvdsubtitles)
 
-set(HEDEAR_FILES MicroDVDSubtitles.h)
-set(SOURCE_FILES MicroDVDSubtitles.cpp)
+set(HEDEAR_FILES MovieSubtitles.h)
+set(SOURCE_FILES MovieSubtitles.cpp)
 
 add_library(libmicrodvdsubtitles STATIC ${SOURCE_FILES})
 target_include_directories(libmicrodvdsubtitles PUBLIC .)

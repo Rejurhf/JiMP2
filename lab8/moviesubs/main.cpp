@@ -2,13 +2,13 @@
 // Created by Rejurhf on 03.05.2017.
 //
 
-#include "MicroDVDSubtitles.h"
+#include "MovieSubtitles.h"
 #include <iostream>
 
-using namespace subtitles;
+using namespace moviesubs;
 
 int main(){
-    MicroDVDSubtitles s;
+    MicroDvdSubtitles s;
     std::stringstream in {"{10}{200}COS TAM\n{260}{300}INNEGO\n"};
     std::stringstream out;
     s.ShiftSubtitlesBy(&in, &out, 1400, 10);

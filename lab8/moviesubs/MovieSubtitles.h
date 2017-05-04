@@ -9,13 +9,13 @@
 #include <regex>
 #include <stdexcept>
 
-namespace subtitles{
+namespace moviesubs{
     class MovieSubtitles{
     public:
         virtual void ShiftSubtitlesBy(std::stringstream*, std::stringstream*, int, int)=0;
     };
 
-    class MicroDVDSubtitles: public MovieSubtitles{
+    class MicroDvdSubtitles: public MovieSubtitles{
     public:
         void ShiftSubtitlesBy(std::stringstream*, std::stringstream*, int, int);
     };
