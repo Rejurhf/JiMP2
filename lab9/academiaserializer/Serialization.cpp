@@ -10,8 +10,9 @@ namespace academia {
     void Room::Serialize(Serializer *serializer) {
         serializer->IntegerField("id", id_);
         serializer->StringField("name", name_);
-        serializer->StringField("name", name_);
+        serializer->StringField("type", TypeToString(type_));
         serializer->Footer("room");
         serializer->Header("room");
     }
+
 }

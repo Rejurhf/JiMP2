@@ -48,6 +48,26 @@ namespace academia {
         int id_;
         string name_;
         Type type_;
+        string TypeToString(const Type &type){
+            switch(type){
+                case Type::CLASSROOM:
+                    return "CLASSROOM";
+                case Type::LECTURE_HALL:
+                    return "LECTURE_HALL";
+                case Type::COMPUTER_LAB:
+                    return "COMPUTER_LAB";
+            }
+        }
+    };
+
+    class Building: public Serializable{
+    public:
+        Building(int id_, const string &name_, std::vector<Room> &rooms);
+        void Serialize(Serializer *serializer) override;
+    private:
+        int id_;
+        string name_;
+        std::vector<Room> rooms_;
     };
 }
 
