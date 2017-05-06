@@ -15,6 +15,7 @@ namespace academia {
 
     class Serializable{
     public:
+        virtual void Serialize(XmlSerializer *) = 0;
         virtual void Serialize(Serializer *) = 0;
     };
 
@@ -43,6 +44,7 @@ namespace academia {
             COMPUTER_LAB
         };
         Room(int id_, const string &name_, Type type_);
+        void Serialize(XmlSerializer *serializer) override;
         void Serialize(Serializer *serializer) override;
     private:
         int id_;
@@ -68,6 +70,11 @@ namespace academia {
         int id_;
         string name_;
         std::vector<Room> rooms_;
+    };
+
+    class XmlSerializer: public Serializer{
+    public:
+        XmlSerializer(std::ostream *out): Serializer(out){};
     };
 }
 
