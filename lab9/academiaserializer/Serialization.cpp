@@ -14,8 +14,4 @@ namespace academia {
         serializer->Footer("room");
         serializer->Header("room");
     }
-
-    void Room::Serialize(XmlSerializer *serializer) {
-            (*serializer)->out_ << "a";
-    }
 }
