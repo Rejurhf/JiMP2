@@ -26,7 +26,7 @@ namespace algo{
     std::vector<std::string> MapToString(const std::vector<double> &v) {
         //std::transform(v.begin(), v.end(), v.)
         std::vector<std::string> s;
-        std::transform(v.begin(), v.end(), s.begin(), [](int i){
+        std::transform(v.begin(), v.end(), std::back_inserter(s), [](double i){
             return std::to_string(i);
         });
         return s;
