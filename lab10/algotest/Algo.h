@@ -5,7 +5,10 @@
 #ifndef JIMP_EXERCISES_ALGO_H
 #define JIMP_EXERCISES_ALGO_H
 
+#include <string>
 #include <vector>
+#include <set>
+#include <map>
 
 namespace algo {
     void CopyInto(const std::vector<int> &v, int n_elements, std::vector<int> *out);
