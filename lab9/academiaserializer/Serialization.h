@@ -76,7 +76,7 @@ namespace academia {
     class XmlSerializer: public Serializer{
     public:
         XmlSerializer(std::ostream *out): Serializer(out){};
-        virtual void IntegerField(const string &field_name, int value) override
+        virtual void IntegerField(const string &field_name, int value) override;
         virtual void DoubleField(const string &field_name, double value) override{};
         virtual void StringField(const string &field_name, const std::string &value) override;
         virtual void BooleanField(const string &field_name, bool value) override{};
@@ -86,6 +86,23 @@ namespace academia {
                 const std::vector<std::reference_wrapper<const academia::Serializable>> &value) override{};
         virtual void Header(const std::string &object_name) override;
         virtual void Footer(const std::string &object_name) override;
+    };
+
+    class JsonSerializer: public Serializer{
+    public:
+        JsonSerializer(std::ostream *out): Serializer(out){};
+        virtual void IntegerField(const string &field_name, int value) override;
+        virtual void DoubleField(const string &field_name, double value) override{};
+        virtual void StringField(const string &field_name, const std::string &value) override;
+        virtual void BooleanField(const string &field_name, bool value) override{};
+        virtual void SerializableField(const string &field_name, const academia::Serializable &value) override;
+        virtual void ArrayField(
+                const string &field_name,
+                const std::vector<std::reference_wrapper<const academia::Serializable>> &value) override{};
+        virtual void Header(const std::string &object_name) override;
+        virtual void Footer(const std::string &object_name) override;
+
+        void Separate() override {(*out_) << ", ";}
     };
 }
 
