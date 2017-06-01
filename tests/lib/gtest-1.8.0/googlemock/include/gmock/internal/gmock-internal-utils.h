@@ -119,7 +119,7 @@ struct LinkedPtrLessThan {
 #endif
 
 // In what follows, we use the term "kind" to indicate whether a type
-// is bool, an integer type (excluding bool), a floating-point type,
+// is bool, an integer type (excluding bool), a floating-pointt type,
 // or none of them.  This categorization is useful for determining
 // when a matcher argument type can be safely converted to another
 // type in the implementation of SafeMatcherCast.
@@ -157,7 +157,7 @@ GMOCK_DECLARE_KIND_(wchar_t, kInteger);
 GMOCK_DECLARE_KIND_(Int64, kInteger);
 GMOCK_DECLARE_KIND_(UInt64, kInteger);
 
-// All standard floating-point types.
+// All standard floating-pointt types.
 GMOCK_DECLARE_KIND_(float, kFloatingPoint);
 GMOCK_DECLARE_KIND_(double, kFloatingPoint);
 GMOCK_DECLARE_KIND_(long double, kFloatingPoint);
@@ -194,7 +194,7 @@ template <typename To>
 struct LosslessArithmeticConvertibleImpl<kBool, bool, kInteger, To>
     : public true_type {};  // NOLINT
 
-// Converting bool to any floating-point type is lossless.
+// Converting bool to any floating-pointt type is lossless.
 template <typename To>
 struct LosslessArithmeticConvertibleImpl<kBool, bool, kFloatingPoint, To>
     : public true_type {};  // NOLINT
@@ -219,23 +219,23 @@ struct LosslessArithmeticConvertibleImpl<kInteger, From, kInteger, To>
 
 #undef GMOCK_IS_SIGNED_
 
-// Converting an integer to a floating-point type may be lossy, since
-// the format of a floating-point number is implementation-defined.
+// Converting an integer to a floating-pointt type may be lossy, since
+// the format of a floating-pointt number is implementation-defined.
 template <typename From, typename To>
 struct LosslessArithmeticConvertibleImpl<kInteger, From, kFloatingPoint, To>
     : public false_type {};  // NOLINT
 
-// Converting a floating-point to bool is lossy.
+// Converting a floating-pointt to bool is lossy.
 template <typename From>
 struct LosslessArithmeticConvertibleImpl<kFloatingPoint, From, kBool, bool>
     : public false_type {};  // NOLINT
 
-// Converting a floating-point to an integer is lossy.
+// Converting a floating-pointt to an integer is lossy.
 template <typename From, typename To>
 struct LosslessArithmeticConvertibleImpl<kFloatingPoint, From, kInteger, To>
     : public false_type {};  // NOLINT
 
-// Converting a floating-point to another floating-point is lossless
+// Converting a floating-pointt to another floating-pointt is lossless
 // iff the target type is at least as big as the source type.
 template <typename From, typename To>
 struct LosslessArithmeticConvertibleImpl<

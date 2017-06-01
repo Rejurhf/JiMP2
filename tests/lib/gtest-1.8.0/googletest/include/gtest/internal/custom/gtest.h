@@ -27,7 +27,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-// Injection point for custom user configurations.
+// Injection pointt for custom user configurations.
 // The following macros can be defined:
 //
 // GTEST_OS_STACK_TRACE_GETTER_  - The name of an implementation of

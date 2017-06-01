@@ -8,6 +8,7 @@
 #include <MemLeakTest.h>
 #include <StringUtility.h>
 #include <Square.h>
+#include <cmath>
 
 using ::geometry::Point;
 using ::geometry::Square;

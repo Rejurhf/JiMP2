@@ -1880,7 +1880,7 @@ MakePredicateFormatterFromMatcher(M matcher) {
   return PredicateFormatterFromMatcher<M>(internal::move(matcher));
 }
 
-// Implements the polymorphic floating point equality matcher, which matches
+// Implements the polymorphic floating pointt equality matcher, which matches
 // two float values using ULP-based approximation or, optionally, a
 // user-specified epsilon.  The template is meant to be instantiated with
 // FloatType being either float or double.
@@ -1909,7 +1909,7 @@ class FloatingEqMatcher {
         << ", where max_abs_error is" << max_abs_error;
   }
 
-  // Implements floating point equality matcher as a Matcher<T>.
+  // Implements floating pointt equality matcher as a Matcher<T>.
   template <typename T>
   class Impl : public MatcherInterface<T> {
    public:
@@ -2074,7 +2074,7 @@ class PointeeMatcher {
     }
 
     virtual void DescribeNegationTo(::std::ostream* os) const {
-      *os << "does not point to a value that ";
+      *os << "does not pointt to a value that ";
       matcher_.DescribeTo(os);
     }
 

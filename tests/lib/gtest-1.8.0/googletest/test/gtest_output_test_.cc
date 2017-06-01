@@ -229,21 +229,21 @@ TEST(SCOPED_TRACETest, CanBeRepeated) {
 
   SCOPED_TRACE("A");
   ADD_FAILURE()
-      << "This failure is expected, and should contain trace point A.";
+      << "This failure is expected, and should contain trace pointt A.";
 
   SCOPED_TRACE("B");
   ADD_FAILURE()
-      << "This failure is expected, and should contain trace point A and B.";
+      << "This failure is expected, and should contain trace pointt A and B.";
 
   {
     SCOPED_TRACE("C");
     ADD_FAILURE() << "This failure is expected, and should "
-                  << "contain trace point A, B, and C.";
+                  << "contain trace pointt A, B, and C.";
   }
 
   SCOPED_TRACE("D");
   ADD_FAILURE() << "This failure is expected, and should "
-                << "contain trace point A, B, and D.";
+                << "contain trace pointt A, B, and D.";
 }
 
 #if GTEST_IS_THREADSAFE

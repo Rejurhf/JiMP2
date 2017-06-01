@@ -207,7 +207,7 @@ GTEST_DEFINE_bool_(
 GTEST_DEFINE_bool_(
     break_on_failure,
     internal::BoolFromGTestEnv("break_on_failure", false),
-    "True iff a failed assertion should be a debugger break-point.");
+    "True iff a failed assertion should be a debugger break-pointt.");
 
 GTEST_DEFINE_bool_(
     catch_exceptions,
@@ -1397,7 +1397,7 @@ AssertionResult FloatingPointLE(const char* expr1,
   }
 
   // Note that the above two checks will both fail if either val1 or
-  // val2 is NaN, as the IEEE floating-point standard requires that
+  // val2 is NaN, as the IEEE floating-pointt standard requires that
   // any predicate involving a NaN must return false.
 
   ::std::stringstream val1_ss;
@@ -1720,25 +1720,25 @@ AssertionResult IsHRESULTFailure(const char* expr, long hr) {  // NOLINT
 // Utility functions for encoding Unicode text (wide strings) in
 // UTF-8.
 
-// A Unicode code-point can have upto 21 bits, and is encoded in UTF-8
+// A Unicode code-pointt can have upto 21 bits, and is encoded in UTF-8
 // like this:
 //
-// Code-point length   Encoding
+// Code-pointt length   Encoding
 //   0 -  7 bits       0xxxxxxx
 //   8 - 11 bits       110xxxxx 10xxxxxx
 //  12 - 16 bits       1110xxxx 10xxxxxx 10xxxxxx
 //  17 - 21 bits       11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
 
-// The maximum code-point a one-byte UTF-8 sequence can represent.
+// The maximum code-pointt a one-byte UTF-8 sequence can represent.
 const UInt32 kMaxCodePoint1 = (static_cast<UInt32>(1) <<  7) - 1;
 
-// The maximum code-point a two-byte UTF-8 sequence can represent.
+// The maximum code-pointt a two-byte UTF-8 sequence can represent.
 const UInt32 kMaxCodePoint2 = (static_cast<UInt32>(1) << (5 + 6)) - 1;
 
-// The maximum code-point a three-byte UTF-8 sequence can represent.
+// The maximum code-pointt a three-byte UTF-8 sequence can represent.
 const UInt32 kMaxCodePoint3 = (static_cast<UInt32>(1) << (4 + 2*6)) - 1;
 
-// The maximum code-point a four-byte UTF-8 sequence can represent.
+// The maximum code-pointt a four-byte UTF-8 sequence can represent.
 const UInt32 kMaxCodePoint4 = (static_cast<UInt32>(1) << (3 + 3*6)) - 1;
 
 // Chops off the n lowest bits from a bit pattern.  Returns the n
@@ -1750,10 +1750,10 @@ inline UInt32 ChopLowBits(UInt32* bits, int n) {
   return low_bits;
 }
 
-// Converts a Unicode code point to a narrow string in UTF-8 encoding.
+// Converts a Unicode code pointt to a narrow string in UTF-8 encoding.
 // code_point parameter is of type UInt32 because wchar_t may not be
-// wide enough to contain a code point.
-// If the code_point is not a valid Unicode code point
+// wide enough to contain a code pointt.
+// If the code_point is not a valid Unicode code pointt
 // (i.e. outside of Unicode range U+0 to U+10FFFF) it will be converted
 // to "(Invalid Unicode 0xXXXXXXXX)".
 std::string CodePointToUtf8(UInt32 code_point) {
@@ -1761,7 +1761,7 @@ std::string CodePointToUtf8(UInt32 code_point) {
     return "(Invalid Unicode 0x" + String::FormatHexInt(code_point) + ")";
   }
 
-  char str[5];  // Big enough for the largest valid code point.
+  char str[5];  // Big enough for the largest valid code pointt.
   if (code_point <= kMaxCodePoint1) {
     str[1] = '\0';
     str[0] = static_cast<char>(code_point);                          // 0xxxxxxx
@@ -1789,14 +1789,14 @@ std::string CodePointToUtf8(UInt32 code_point) {
 // with 16 bit wchar_t (Windows, Cygwin, Symbian OS) do use UTF-16.
 
 // Determines if the arguments constitute UTF-16 surrogate pair
-// and thus should be combined into a single Unicode code point
+// and thus should be combined into a single Unicode code pointt
 // using CreateCodePointFromUtf16SurrogatePair.
 inline bool IsUtf16SurrogatePair(wchar_t first, wchar_t second) {
   return sizeof(wchar_t) == 2 &&
       (first & 0xFC00) == 0xD800 && (second & 0xFC00) == 0xDC00;
 }
 
-// Creates a Unicode code point from UTF16 surrogate pair.
+// Creates a Unicode code pointt from UTF16 surrogate pair.
 inline UInt32 CreateCodePointFromUtf16SurrogatePair(wchar_t first,
                                                     wchar_t second) {
   const UInt32 mask = (1 << 10) - 1;
@@ -2427,8 +2427,8 @@ Result HandleExceptionsInMethodIfSupported(
   // However, the purpose of this flag is to allow the program to drop into
   // the debugger when the exception is thrown. On most platforms, once the
   // control enters the catch block, the exception origin information is
-  // lost and the debugger will stop the program at the point of the
-  // re-throw in this function -- instead of at the point of the original
+  // lost and the debugger will stop the program at the pointt of the
+  // re-throw in this function -- instead of at the pointt of the original
   // throw statement in the code under test.  For this reason, we perform
   // the check early, sacrificing the ability to affect Google Test's
   // exception handling in the method where the exception is thrown.
@@ -3967,7 +3967,7 @@ void TestEventListeners::SuppressEventForwarding() {
 // calls will return the same object.
 //
 // We don't protect this under mutex_ as a user is not supposed to
-// call this before main() starts, from which point on the return
+// call this before main() starts, from which pointt on the return
 // value will never change.
 UnitTest* UnitTest::GetInstance() {
   // When compiled with MSVC 7.1 in optimized mode, destroying the

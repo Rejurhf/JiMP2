@@ -6,6 +6,7 @@
 #include <type_traits>
 #include <MemLeakTest.h>
 #include <StudentRepository.h>
+#include <Student.h>
 
 using ::academia::StudyYear;
 using ::academia::Student;

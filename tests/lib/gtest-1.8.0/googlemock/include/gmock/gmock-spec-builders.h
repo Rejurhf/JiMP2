@@ -168,7 +168,7 @@ class GTEST_API_ UntypedFunctionMockerBase {
 
   // Returns the expectation that matches the given function arguments
   // (or NULL is there's no match); when a match is found,
-  // untyped_action is set to point to the action that should be
+  // untyped_action is set to pointt to the action that should be
   // performed (or NULL if the action is "do default"), and
   // is_excessive is modified to indicate whether the call exceeds the
   // expected number.
@@ -480,7 +480,7 @@ class GTEST_API_ Mock {
 //     object it references can be called via expectation_base().
 //   - The constructors and destructor are defined out-of-line because
 //     the Symbian WINSCW compiler wants to otherwise instantiate them
-//     when it sees this class definition, at which point it doesn't have
+//     when it sees this class definition, at which pointt it doesn't have
 //     ExpectationBase available yet, leading to incorrect destruction
 //     in the linked_ptr (or compilation errors if using a checking
 //     linked_ptr).
@@ -1521,7 +1521,7 @@ class FunctionMockerBase : public UntypedFunctionMockerBase {
   // action fails.  The caller is responsible for deleting the result.
   // L = *
   virtual UntypedActionResultHolderBase* UntypedPerformDefaultAction(
-      const void* untyped_args,  // must point to an ArgumentTuple
+      const void* untyped_args,  // must pointt to an ArgumentTuple
       const string& call_description) const {
     const ArgumentTuple& args =
         *static_cast<const ArgumentTuple*>(untyped_args);
@@ -1662,7 +1662,7 @@ class FunctionMockerBase : public UntypedFunctionMockerBase {
 
   // Returns the expectation that matches the given function arguments
   // (or NULL is there's no match); when a match is found,
-  // untyped_action is set to point to the action that should be
+  // untyped_action is set to pointt to the action that should be
   // performed (or NULL if the action is "do default"), and
   // is_excessive is modified to indicate whether the call exceeds the
   // expected number.

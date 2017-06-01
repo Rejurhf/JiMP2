@@ -263,7 +263,7 @@ namespace internal {
 // want to format the C string as a string, since we know it is
 // compared by value with the string object.  If the value is a char
 // pointer but the other operand is not an STL string object, we don't
-// know whether the pointer is supposed to point to a NUL-terminated
+// know whether the pointer is supposed to pointt to a NUL-terminated
 // string, and thus want to print it as a pointer to be safe.
 //
 // INTERNAL IMPLEMENTATION - DO NOT USE IN A USER PROGRAM.
@@ -287,7 +287,7 @@ class FormatForComparison<ToPrint[N], OtherOperand> {
 };
 
 // By default, print C string as pointers to be safe, as we don't know
-// whether they actually point to a NUL-terminated string.
+// whether they actually pointt to a NUL-terminated string.
 
 #define GTEST_IMPL_FORMAT_C_STRING_AS_POINTER_(CharType)                \
   template <typename OtherOperand>                                      \
@@ -306,7 +306,7 @@ GTEST_IMPL_FORMAT_C_STRING_AS_POINTER_(const wchar_t);
 #undef GTEST_IMPL_FORMAT_C_STRING_AS_POINTER_
 
 // If a C string is compared with an STL string object, we know it's meant
-// to point to a NUL-terminated string, and thus can print it as a string.
+// to pointt to a NUL-terminated string, and thus can print it as a string.
 
 #define GTEST_IMPL_FORMAT_C_STRING_AS_STRING_(CharType, OtherStringType) \
   template <>                                                           \
@@ -396,7 +396,7 @@ void DefaultPrintTo(IsContainer /* dummy */,
 
 // Used to print a pointer that is neither a char pointer nor a member
 // pointer, when the user doesn't define PrintTo() for it.  (A member
-// variable pointer or member function pointer doesn't really point to
+// variable pointer or member function pointer doesn't really pointt to
 // a location in the address space.  Their representation is
 // implementation-defined.  Therefore they will be printed as raw
 // bytes.)

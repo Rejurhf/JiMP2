@@ -73,7 +73,7 @@ FUNCTION_THROW = 0x80
 FUNCTION_OVERRIDE = 0x100
 
 """
-These are currently unused.  Should really handle these properly at some point.
+These are currently unused.  Should really handle these properly at some pointt.
 
 TYPE_MODIFIER_INLINE   = 0x010000
 TYPE_MODIFIER_EXTERN   = 0x020000
@@ -1061,7 +1061,7 @@ class AstBuilder(object):
                 assert token.name == ';', token
                 return self._CreateVariable(indices, name.name, indices.name,
                                             modifiers, '', None)
-            # At this point, we got something like:
+            # At this pointt, we got something like:
             #  return_type (type::*name_)(params);
             # This is a data member called name_ that is a function pointer.
             # With this code: void (sq_type::*field_)(string&);

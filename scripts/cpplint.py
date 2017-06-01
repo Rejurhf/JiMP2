@@ -32,7 +32,7 @@
 
 The goal of this script is to identify places in the code that *may*
 be in non-compliance with google style.  It does not attempt to fix
-up these problems -- the point is to educate.  It does also not
+up these problems -- the pointt is to educate.  It does also not
 attempt to find all problems, or to ensure that everything it does
 find is legitimately a problem.
 
@@ -1467,7 +1467,7 @@ class CleansedLines(object):
       else:
         # Found single quote, check nearby text to eliminate digit separators.
         #
-        # There is no special handling for floating point here, because
+        # There is no special handling for floating pointt here, because
         # the integer/fractional/exponent parts would all be parsed
         # correctly as long as there are digits on both sides of the
         # separator.  So we are fine as long as we don't see something
@@ -2456,7 +2456,7 @@ class NestingState(object):
       if self.pp_stack:
         if not self.pp_stack[-1].seen_else:
           # This is the first #else or #elif block.  Remember the
-          # whole nesting stack up to this point.  This is what we
+          # whole nesting stack up to this pointt.  This is what we
           # keep after the #endif.
           self.pp_stack[-1].seen_else = True
           self.pp_stack[-1].stack_before_else = copy.deepcopy(self.stack)
@@ -5151,7 +5151,7 @@ def CheckCasts(filename, clean_lines, linenum, error):
 
   # In addition, we look for people taking the address of a cast.  This
   # is dangerous -- casts can assign to temporaries, so the pointer doesn't
-  # point where you think.
+  # pointt where you think.
   #
   # Some non-identifier character is required before the '&' for the
   # expression to be recognized as a cast.  These are casts:
@@ -5237,7 +5237,7 @@ def CheckCStyleCast(filename, clean_lines, linenum, cast_type, pattern, error):
            remainder):
     return False
 
-  # At this point, all that should be left is actual casts.
+  # At this pointt, all that should be left is actual casts.
   error(filename, linenum, 'readability/casting', 4,
         'Using C-style cast.  Use %s<%s>(...) instead' %
         (cast_type, match.group(1)))
