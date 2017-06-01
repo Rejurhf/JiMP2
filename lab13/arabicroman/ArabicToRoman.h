@@ -5,10 +5,12 @@
 #ifndef JIMP_EXERCISES_ARABICTOROMAN_H
 #define JIMP_EXERCISES_ARABICTOROMAN_H
 
+#include <string>
+using std::string;
 
-class ArabicToRoman {
-
-};
-
+namespace arabicroman {
+    string ConversionToRoman(int value);
+    int ConversionToArabic(string number);
+}
 
 #endif //JIMP_EXERCISES_ARABICTOROMAN_H
