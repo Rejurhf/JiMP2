@@ -4,76 +4,87 @@
 
 #ifndef JIMP_EXERCISES_TREEITERATORS_H
 #define JIMP_EXERCISES_TREEITERATORS_H
-#include <Tree.h>
+#include <vector>
+#include "../tree/Tree.h"
 
 namespace tree {
-
     template<class T>
     class GenericIterator {
     public:
-        GenericIterator(Tree<T> *root) : root_(root) {}
-        const void Add(const T &val) {values_.push_back(val);}
-        const void setIteration(const size_t &in) {i_ = in;}
-        size_t size() const {return values_.size();}
-        virtual void MakeVectorBasedOnOrder(Tree<T> *node) = 0;
+        GenericIterator(Node<T> *head_) : head_(head_) {}
+        virtual void GenerateVectorOrder(Node<T> *pivot) = 0;
         T operator++() { if (i_ >= 0) ++i_; }
-        T operator*() { return values_[i_]; }
-        bool operator!=(const GenericIterator &iterator) const {
-            return (values_ != iterator.values_ || i_ != iterator.i_);
+        T operator*() { return generated_[i_]; }
+        bool operator!=(const GenericIterator &second) const {
+            return generated_ != second.generated_ || i_ != second.i_;
         }
 
+        void setIteration(const size_t &in) { i_ = in; }
+        size_t size() const { return generated_.size(); }
+        void pushBackValue(const T &val) { generated_.push_back(val); }
+
     private:
-        Tree<T> *root_;
-        std::vector<T> values_;
+        Node<T> *head_;
+        std::vector<T> generated_;
         size_t i_;
     };
 
     template<class T>
     class PreOrderTreeIterator : public GenericIterator<T> {
     public:
-        PreOrderTreeIterator(Tree<T> *root) : GenericIterator<T>(root) {
-            MakeVectorBasedOnOrder(root);
+        PreOrderTreeIterator(Node<T> *head_) : GenericIterator<T>(head_) {
+            GenerateVectorOrder(head_);
             this->setIteration(0);
         }
 
-        void MakeVectorBasedOnOrder(Tree<T> *node) override {
-            this->Add(node->value_);
-            if (node->left_ != nullptr) MakeVectorBasedOnOrder(node->left_.get());
-            if (node->right_ != nullptr) MakeVectorBasedOnOrder(node->right_.get());
+        void GenerateVectorOrder(Node<T> *pivot) override {
+
+            this->pushBackValue(pivot->value_);
+
+            if (pivot->left_ != nullptr)
+                GenerateVectorOrder(pivot->left_.get());
+
+            if (pivot->right_ != nullptr)
+                GenerateVectorOrder(pivot->right_.get());
         }
-    };
-
-    template<class T>
-    class PreOrderTreeView {
-    public:
-        PreOrderTreeView(Tree<T> *tree) : iter_(tree->Root()) {}
-
-        PreOrderTreeIterator<T> begin() {
-            iter_.setIteration(0);
-            return iter_;
-        }
-
-        PreOrderTreeIterator<T> end() {
-            iter_.setIteration(iter_.size() - 1);
-            return iter_;
-        }
-
-    private:
-        PreOrderTreeIterator<T> iter_;
     };
 
     template<class T>
     class InOrderTreeIterator : public GenericIterator<T> {
     public:
-        InOrderTreeIterator(Tree<T> *root) : GenericIterator<T>(root) {
-            MakeVectorBasedOnOrder(root);
+        InOrderTreeIterator(Node<T> *head_) : GenericIterator<T>(head_) {
+            GenerateVectorOrder(head_);
             this->setIteration(0);
         }
 
-        void MakeVectorBasedOnOrder(Tree<T> *node) override {
-            if (node->left_ != nullptr) MakeVectorBasedOnOrder(node->left_.get());
-            this->Add(node->value_);
-            if (node->right_ != nullptr) MakeVectorBasedOnOrder(node->right_.get());
+        void GenerateVectorOrder(Node<T> *pivot) override {
+            if (pivot->left_ != nullptr)
+                GenerateVectorOrder(pivot->left_.get());
+
+            this->pushBackValue(pivot->value_);
+
+            if (pivot->right_ != nullptr)
+                GenerateVectorOrder(pivot->right_.get());
+        }
+    };
+
+    template<class T>
+    class PostOrderTreeIterator : public GenericIterator<T> {
+    public:
+        PostOrderTreeIterator(Node<T> *head_) : GenericIterator<T>(head_) {
+            GenerateVectorOrder(head_);
+            this->setIteration(0);
+        }
+
+        void GenerateVectorOrder(Node<T> *pivot) override {
+
+            if (pivot->left_ != nullptr)
+                GenerateVectorOrder(pivot->left_.get());
+
+            if (pivot->right_ != nullptr)
+                GenerateVectorOrder(pivot->right_.get());
+
+            this->pushBackValue(pivot->value_);
         }
     };
 
@@ -97,18 +108,22 @@ namespace tree {
     };
 
     template<class T>
-    class PostOrderTreeIterator : public GenericIterator<T> {
+    class PreOrderTreeView {
     public:
-        PostOrderTreeIterator(Tree<T> *root) : GenericIterator<T>(root) {
-            MakeVectorBasedOnOrder(root);
-            this->setIteration(0);
+        PreOrderTreeView(Tree<T> *tree) : iter_(tree->Root()) {}
+
+        PreOrderTreeIterator<T> begin() {
+            iter_.setIteration(0);
+            return iter_;
         }
 
-        void MakeVectorBasedOnOrder(Tree<T> *node) override {
-            if (node->left_ != nullptr) MakeVectorBasedOnOrder(node->left_.get());
-            if (node->right_ != nullptr) MakeVectorBasedOnOrder(node->right_.get());
-            this->Add(node->value_);
+        PreOrderTreeIterator<T> end() {
+            iter_.setIteration(iter_.size() - 1);
+            return iter_;
         }
+
+    private:
+        PreOrderTreeIterator<T> iter_;
     };
 
     template<class T>
@@ -144,6 +159,6 @@ namespace tree {
     PostOrderTreeView<T> PostOrder(Tree<T> *tree) {
         return PostOrderTreeView<T>(tree);
     };
-}
 
+}
 #endif //JIMP_EXERCISES_TREEITERATORS_H
