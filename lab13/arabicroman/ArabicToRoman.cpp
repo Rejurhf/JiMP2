@@ -53,4 +53,47 @@ namespace arabicroman{
         }
         return roman;
     }
+
+    void AddToArabic(int &arabic, int value, int &flag, int position){
+        if(flag > position)
+            if(value == 1000)
+                arabic += 800;
+            else if(value == 500)
+                arabic += 300;
+            else if(value == 100)
+                arabic += 80;
+            else if(value == 50)
+                arabic += 30;
+            else if(value == 10)
+                arabic += 8;
+            else
+                arabic += 3;
+        else{
+            flag = position;
+            arabic += value;
+        }
+    }
+
+    int ConversionToArabic(string value){
+        int flag = 0;
+        string roman = value;
+        int arabic = 0;
+        for(int i = 0; i < roman.size(); ++i) {
+            if(roman[i] == 'M')
+                AddToArabic(arabic, 1000, flag, 0);
+            else if(roman[i] == 'D')
+                AddToArabic(arabic, 500, flag, 1);
+            else if(roman[i] == 'C')
+                AddToArabic(arabic, 100, flag, 2);
+            else if(roman[i] == 'L')
+                AddToArabic(arabic, 50, flag, 3);
+            else if(roman[i] == 'X')
+                AddToArabic(arabic, 10, flag, 4);
+            else if(roman[i] == 'V')
+                AddToArabic(arabic, 5, flag, 5);
+            else if(roman[i] == 'I')
+                AddToArabic(arabic, 1, flag, 6);
+        }
+        return arabic;
+    }
 }
